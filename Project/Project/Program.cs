@@ -13,6 +13,7 @@ ingredientList.Add(ingredient04);
 
 var recipe = new Recipe(1, "Prajitura cu piersici", 190, ingredientList);
 int number = 0;
+bool foundException = false;
 
 //Write Try-catch-Finally block with multiple catch statements
 //Add conditional compilation symbols
@@ -25,6 +26,7 @@ try
 }
 catch (ArgumentOutOfRangeException)
 {
+    foundException = true;
     Console.WriteLine("The given number is invalid!");
 }
 finally
@@ -45,10 +47,12 @@ try
 }
 catch (NegativeCaloriesException e)
 {
+    foundException = true;
     Console.WriteLine(e.Message);
 }
 catch (NoMatchException e)
 {
+    foundException = true;
     Console.WriteLine(e.Message);
 }
 finally
@@ -56,3 +60,5 @@ finally
     Console.WriteLine("End of testing try-catch...");
 }
 #endif
+
+DebugOperation.Action(foundException);
