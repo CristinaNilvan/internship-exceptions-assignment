@@ -19,15 +19,41 @@ namespace Project
         public int Id { get; set; }
         public string? Name { get; set; }
         public int Calories { get; set; }
-        public List<Ingredient>? Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
 
         //Create methods which checks input arguments and throws exceptions
+        //Rethrow exception
         public Ingredient GetAnIngredient(int number)
         {
-            if (number > Ingredients.Count)
-                throw new ArgumentOutOfRangeException();
+            try
+            {
+                return Ingredients.ElementAt(number);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                throw;
+            }
+        }
 
-            return Ingredients.ElementAt(number);
+        //Create custom exceptions and throw them 
+        public List<Ingredient> FindIngredientsLessThanCalories(int calories)
+        {
+            if (calories < 0)
+                throw new NegativeCaloriesException("Not valid number of calories: negative number!");
+
+            var auxIngredients = new List<Ingredient>();
+            foreach (var item in Ingredients)
+            {
+                if (item.Calories < calories)
+                {
+                    auxIngredients.Add(item);
+                }
+            }
+
+            if (auxIngredients.Count == 0)
+                throw new NoMatchException("No elements were found!");
+
+            return auxIngredients;
         }
     }
 }
