@@ -12,6 +12,43 @@ ingredientList.Add(ingredient03);
 ingredientList.Add(ingredient04);
 
 var recipe = new Recipe(1, "Prajitura cu piersici", 190, ingredientList);
+int number = 0;
 
-var auxIngredient = recipe.GetAnIngredient(6);
-Console.WriteLine(auxIngredient.ToString());
+try
+{
+    number = 6;
+    var auxIngredient = recipe.GetAnIngredient(number);
+    Console.WriteLine($"The ingredient with number {number} is: {auxIngredient.Name}");
+}
+catch (ArgumentOutOfRangeException)
+{
+    Console.WriteLine("The given number is invalid!");
+}
+finally
+{
+    number = 0;
+}
+
+try
+{
+    number = 58;
+    var auxIngredients = recipe.FindIngredientsLessThanCalories(number);
+
+    Console.WriteLine($"The ingredients with calories less than {number} are:");
+    foreach (var item in auxIngredients)
+    {
+        Console.WriteLine(item.Name);
+    }
+}
+catch (NegativeCaloriesException e)
+{
+    Console.WriteLine(e.Message);
+}
+catch (NoMatchException e)
+{
+    Console.WriteLine(e.Message);
+}
+finally
+{
+    Console.WriteLine("End of testing try-catch...");
+}
