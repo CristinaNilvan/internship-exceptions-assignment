@@ -1,7 +1,5 @@
 ﻿using Project;
 
-#warning "Might have exceptions"
-
 Ingredient ingredient01 = new Ingredient(1, "faina", 60, 40);
 Ingredient ingredient02 = new Ingredient(2, "lapte", 55, 50);
 Ingredient ingredient03 = new Ingredient(3, "zahar", 45, 70);
