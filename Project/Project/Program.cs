@@ -61,4 +61,5 @@ finally
 }
 #endif
 
+//Use debug class to write debug information to output window
 DebugOperation.Action(foundException);
