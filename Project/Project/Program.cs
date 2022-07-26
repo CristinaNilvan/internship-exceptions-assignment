@@ -1,5 +1,7 @@
 ﻿using Project;
 
+#warning "Might have exceptions"
+
 Ingredient ingredient01 = new Ingredient(1, "faina", 60, 40);
 Ingredient ingredient02 = new Ingredient(2, "lapte", 55, 50);
 Ingredient ingredient03 = new Ingredient(3, "zahar", 45, 70);
@@ -14,6 +16,9 @@ ingredientList.Add(ingredient04);
 var recipe = new Recipe(1, "Prajitura cu piersici", 190, ingredientList);
 int number = 0;
 
+//Write Try-catch-Finally block with multiple catch statements
+//Add conditional compilation symbols
+#if DEBUG
 try
 {
     number = 6;
@@ -28,7 +33,7 @@ finally
 {
     number = 0;
 }
-
+#elif RELEASE
 try
 {
     number = 58;
@@ -52,3 +57,4 @@ finally
 {
     Console.WriteLine("End of testing try-catch...");
 }
+#endif
