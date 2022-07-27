@@ -8,6 +8,11 @@ namespace Project
 {
     internal class Recipe
     {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public int Calories { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
+
         public Recipe(int id, string? name, int calories, List<Ingredient>? ingredients)
         {
             Id = id;
@@ -15,11 +20,6 @@ namespace Project
             Calories = calories;
             Ingredients = ingredients;
         }
-
-        public int Id { get; set; }
-        public string? Name { get; set; }
-        public int Calories { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
 
         //Create methods which checks input arguments and throws exceptions
         //Rethrow exception
